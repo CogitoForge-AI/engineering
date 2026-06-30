@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="{{ lang or 'en' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ page.get('description') or site.description }}">
+<meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+<meta property="og:description" content="{{ page.get('description') or site.description }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ site.brand_icon }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+<meta name="twitter:description" content="{{ page.get('description') or site.description }}">
+<meta name="twitter:image" content="{{ site.brand_icon }}">
+<title>{{ page.title }} | {{ site.title }}</title>
+<link rel="icon" href="{{ site.brand_icon }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.feed_url or '/feed.xml' }}">
+{% if site.highlight_css %}<style>{{ site.highlight_css }}</style>{% endif %}{% for t in translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.url }}">{% endfor %}
+</head>
+<body>
+<div class="page-shell">
+<header class="site-header">
+<a href="/" class="site-title">
+<img class="site-icon" src="{{ site.brand_icon }}" alt="Cogito logo">
+<span class="site-title-copy">
+<span class="site-mark">Cogito</span>
+<span class="site-name">Engineering</span>
+</span>
+</a>
+<nav class="site-nav">
+<a href="/">{{ t("nav.home") }}</a>
+<a href="/about/">{{ t("nav.about") }}</a>
+<a href="/write-for-us/">{{ t("nav.write") }}</a>
+<a href="/tags/">{{ t("nav.tags") }}</a>
+<a href="{{ site.feed_url or '/feed.xml' }}">{{ t("nav.rss") }}</a>
+<a href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">{{ t("nav.github") }}</a>
+{% for t in translations %} <a class="lang-link" hreflang="{{ t.lang }}" href="{{ t.url }}">{{ t.lang|upper }}</a>{% endfor %}
+</nav>
+</header>
+<main class="container">
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+<img class="footer-logo" src="{{ site.brand_logo }}" alt="Cogito AI">
+<p class="footer-title">{{ site.title }}</p>
+<p class="footer-copy">{{ site.tagline }}</p>
+<p class="footer-links">
+<a href="{{ site.github_org_url }}" target="_blank" rel="noopener noreferrer">{{ t("footer.org") }}</a>
+<a href="{{ site.github_url }}" target="_blank" rel="noopener noreferrer">{{ t("footer.repo") }}</a>
+</p>
+</footer>
+</div>
+{% if '<pre class="mermaid"' in content_html %}
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true });
+</script>
+{% endif %}
+</body>
+</html>

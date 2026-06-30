@@ -1,0 +1,542 @@
+:root {
+  --bg: #edf2f4;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #fffdf8;
+  --ink: #0f1720;
+  --muted: #52606d;
+  --line: rgba(15, 23, 32, 0.12);
+  --brand: #ff6f3d;
+  --brand-dark: #d24f24;
+  --accent: #1e6cff;
+  --accent-soft: rgba(30, 108, 255, 0.08);
+  --shadow: 0 24px 80px rgba(15, 23, 32, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --maxw: 72rem;
+  --contentw: 44rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 111, 61, 0.18), transparent 24rem),
+    radial-gradient(circle at top right, rgba(30, 108, 255, 0.12), transparent 24rem),
+    linear-gradient(180deg, #f8fbff 0%, var(--bg) 42%, #e6edf0 100%);
+  font: 18px/1.75 "Source Serif 4", Georgia, serif;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: rgba(177, 76, 28, 0.4);
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  text-decoration-color: var(--brand);
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.site-header,
+.container,
+.site-footer {
+  width: min(calc(100% - 2rem), var(--maxw));
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 0 0.75rem;
+}
+
+.site-title,
+.site-nav,
+.hero-kicker,
+.section-label,
+.button,
+.eyebrow,
+.post-meta,
+.summary-tags,
+.tags,
+.footer-title {
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.site-title {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0;
+  flex: none;
+}
+
+.site-title-copy {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.site-mark {
+  color: var(--brand);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.site-name {
+  font-size: 1.35rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--ink);
+}
+
+.container {
+  padding: 1rem 0 0;
+}
+
+.hero,
+.post,
+.tag-cloud,
+.post-list,
+.site-footer,
+.content-page {
+  backdrop-filter: blur(14px);
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 255, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  padding: 3.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -4rem -5rem auto;
+  width: 16rem;
+  height: 16rem;
+  background: radial-gradient(circle, rgba(30, 108, 255, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 32, 0.035);
+  border: 1px solid rgba(15, 23, 32, 0.06);
+}
+
+.hero-logo {
+  width: min(18rem, 100%);
+  border-radius: 0;
+}
+
+.hero-kicker,
+.section-label,
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--brand);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+.post-header h1,
+.content-page h1,
+.section-heading h2,
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero h1 {
+  margin: 1rem 0 0;
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+}
+
+.hero-body {
+  max-width: 40rem;
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.hero-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-note {
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 32, 0.04);
+}
+
+.hero-note p {
+  margin: 0;
+}
+
+.hero-note-label {
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #fff;
+}
+
+.button-secondary {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+  margin: 2.2rem 0 1rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+}
+
+.post-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.post-summary,
+.content-page,
+.post,
+.tag-cloud,
+.post-list li {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-md);
+}
+
+.post-summary {
+  padding: 1.5rem;
+}
+
+.post-summary h3 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+}
+
+.post-summary .excerpt,
+.content-page p,
+.post p,
+.post li,
+.post blockquote {
+  color: var(--muted);
+}
+
+.post-summary .excerpt {
+  margin: 0.75rem 0 0;
+}
+
+.post-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.post-meta .reading-time::before {
+  content: " \00b7  ";
+}
+
+.summary-tags,
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+}
+
+.summary-tags span,
+.tags a,
+.tag-cloud a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.content-page,
+.post {
+  width: min(100%, var(--contentw));
+  margin: 0 auto;
+  padding: 2.2rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.post-header h1,
+.content-page h1 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+}
+
+.post h2,
+.content-page h2 {
+  margin-top: 2.1rem;
+  font-size: 1.5rem;
+}
+
+.post ul,
+.post ol,
+.content-page ul,
+.content-page ol {
+  padding-left: 1.2rem;
+}
+
+.post blockquote,
+.content-page blockquote {
+  margin: 1.6rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(255, 111, 61, 0.4);
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100%, var(--contentw));
+  margin: 1rem auto 0;
+}
+
+.post-nav a,
+.pagination a {
+  color: var(--brand-dark);
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0 0.2rem;
+}
+
+.page-indicator {
+  color: var(--muted);
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+
+.tag-cloud {
+  list-style: none;
+  padding: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tag-cloud li {
+  list-style: none;
+}
+
+.tag-cloud .count {
+  color: var(--muted);
+  margin-left: 0.25rem;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-card {
+  padding: 1.35rem 1.45rem;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.info-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.55rem;
+}
+
+.info-card p {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+}
+
+.info-card a {
+  color: var(--brand-dark);
+}
+
+.site-footer {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 1.2rem 0 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer-logo {
+  width: min(12rem, 100%);
+  margin-bottom: 0.8rem;
+  border-radius: 0;
+}
+
+.footer-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.footer-copy {
+  max-width: 42rem;
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.8rem 0 0;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+
+pre,
+code {
+  font-family: "SFMono-Regular", "SF Mono", Consolas, monospace;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: #f2eadf;
+  border-radius: 14px;
+  border: 1px solid rgba(25, 33, 39, 0.08);
+}
+
+img {
+  max-width: 100%;
+  border-radius: 14px;
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 17px;
+  }
+
+  .site-header,
+  .section-heading,
+  .post-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero,
+  .post,
+  .content-page {
+    padding: 1.5rem;
+  }
+
+  .hero-notes,
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    gap: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .hero h1 {
+    max-width: none;
+  }
+}

@@ -1,0 +1,10 @@
+[project]
+name = "engineering"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "pyssg",
+]
+
+[tool.uv.sources]
+pyssg = { git = "https://github.com/CogitoForge-AI/cogito-publish" }
